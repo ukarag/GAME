@@ -7,8 +7,7 @@ welcome to the repository GAME which is going to stay empty for a looooong time 
 
 BUT someday everyone will play this game!
 
-Faith is about believing even when you can't see it. 
-- Joel Osteen
+Faith is about believing even when you can't see it. - Joel Osteen
 
 
 (add some gifs here, I couldn't because I'm too dumb)
