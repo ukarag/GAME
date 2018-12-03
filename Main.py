@@ -44,7 +44,7 @@ class Game:
         #Game Loop
         self.playing = True
         while self.playing:
-            self.clock.tick(FPS)
+            self.dt = self.clock.tick(FPS) / 1000
             self.events()
             self.update()
             self.draw()
@@ -66,14 +66,9 @@ class Game:
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_ESCAPE:
                     self.quit()
-                if event.key == pg.K_LEFT or event.key == pg.K_a:
-                    self.player.move(dx = -1)
-                if event.key == pg.K_RIGHT or event.key == pg.K_d:
-                    self.player.move(dx = 1)
-                if event.key == pg.K_UP or event.key == pg.K_w:
-                    self.player.move(dy=-1)
-                if event.key == pg.K_DOWN or event.key == pg.K_s:
-                    self.player.move(dy=1)
+
+
+
                 #if event.key == pg.K_UP or event.key == pg.K_w:
                     #self.player.jump()
                 #if event.key == pg.K_SPACE:

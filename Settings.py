@@ -4,7 +4,7 @@
 TITLE = "Mario"
 WIDTH = 1024
 HEIGHT = 768
-FPS = 12
+FPS = 60
 FONT_NAME = "arial"
 HS_FILE = "highscore.txt"
 SPRITESHEET = "spritesheet_jumper.png"
