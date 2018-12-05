@@ -7,6 +7,7 @@ from Sprites import *
 from os import path
 import sys
 from os import path
+from tilemap import *
 
 class Game:
     def __init__(self):
@@ -20,10 +21,7 @@ class Game:
 
     def load_data(self):
         game_folder = path.dirname(__file__)
-        self.map_data = []
-        with open(path.join(game_folder, "map.txt"), "rt") as f:
-            for line in f:
-                self.map_data.append(line)
+        self.map = Map(path.join(game_folder, "map.txt"))
 
     def new(self):
         #start a new game
@@ -32,13 +30,14 @@ class Game:
         self.walls = pg.sprite.Group()
         # enumerate gives row the index and tiles the value of the item
         # Y - Axis
-        for row, tiles in enumerate(self.map_data):
+        for row, tiles in enumerate(self.map.data):
             # X - Axis
             for col, tile in enumerate(tiles):
                 if tile == "1":
                     Wall(self, col, row)
                 if tile == "P":
                     self.player = Player(self, col, row)
+        self.camera = Camera(self.map.width, self.map.height)
 
     def run(self):
         #Game Loop
@@ -56,6 +55,7 @@ class Game:
     def update(self):
         #Update Game Loop
         self.all_sprites.update()
+        self.camera.update(self.player)
 
     def events(self):
         #game events
@@ -67,12 +67,10 @@ class Game:
                 if event.key == pg.K_ESCAPE:
                     self.quit()
 
-
-
-                #if event.key == pg.K_UP or event.key == pg.K_w:
-                    #self.player.jump()
-                #if event.key == pg.K_SPACE:
-                    #self.player.shoot()
+            #if event.key == pg.K_UP or event.key == pg.K_w:
+                #self.player.jump()
+            #if event.key == pg.K_SPACE:
+                #self.player.shoot()
 
     def draw_grid(self):
         for x in range(0, WIDTH, TILESIZE):
@@ -83,8 +81,9 @@ class Game:
     def draw(self):
         #Draw/Render
         self.screen.fill(BGCOLOR)
-        self.all_sprites.draw(self.screen)
         self.draw_grid()
+        for sprite in self.all_sprites:
+            self.screen.blit(sprite.image, self.camera.apply(sprite))
         # flip display AFTER drawing everything
         pg.display.flip()
 
