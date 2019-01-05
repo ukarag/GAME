@@ -2,8 +2,8 @@
 
 # set up constants that we need later
 TITLE = "Mario"
-WIDTH = 1024
-HEIGHT = 768
+WIDTH = 1000
+HEIGHT = 700
 FPS = 60
 FONT_NAME = "arial"
 HS_FILE = "highscore.txt"
@@ -12,21 +12,13 @@ SPRITESHEET = "spritesheet_jumper.png"
 
 # Tile
 TILESIZE = int(32)
-
+MAP = "map.txt"
 
 PLAYER_SPEED = 300
 PLAYER_ACC = 0.5
 PLAYER_FRICTION = -0.12
 PLAYER_GRAV = 0.8
 PLAYER_JUMP = 128
-
-# Starting Platforms
-PLATFORM_LIST = [(0, HEIGHT-40, WIDTH, 40),
-                 (WIDTH/2-50, HEIGHT*3/4, 100, 20),
-                 (125, HEIGHT - 350, 100, 20),
-                 (350, 200, 100, 20),
-                 (175, 100, 50, 20)
-                 ]
 
 
 # Define some useful colors
