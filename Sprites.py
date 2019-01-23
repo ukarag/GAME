@@ -54,8 +54,8 @@ class Player(pg.sprite.Sprite):
                 if self.vel.y > 0:
                     self.pos.y = hits[0].rect.top - self.rect.height
                 if self.vel.y < 0:
-                    self.y = hits[0].rect.bottom
-                self.vel.pos.x = 0
+                    self.pos.y = hits[0].rect.bottom
+                self.vel.y = 0
                 self.rect.y = self.pos.y
 
 
